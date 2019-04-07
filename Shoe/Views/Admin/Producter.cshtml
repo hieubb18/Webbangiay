@@ -1,0 +1,63 @@
+﻿@using Shoe.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<NHASANXUAT>
+@{
+    ViewBag.Title = "Producter";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+
+<div class="block full">
+    <!-- All Products Title -->
+    <div class="block-title">
+        <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
+        </div>
+        <h2><strong>Danh sách nhà sản xuất</strong></h2>
+    </div>
+
+    <table id="ecom-products" class="table table-bordered table-striped table-vcenter">
+
+        <thead>
+            <tr>
+                <th class="text-center" >Mã nhà sản xuất<SP></SP></th>
+                <th class="text-center">Tên nhà sản xuất</th>
+                <th class="text-center">Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><a href="@Url.Action("Products","Admin",new { id = item.MaNSX})"><strong>@Html.DisplayFor(shoe => item.MaNSX)</strong></a></td>
+
+                    <td class="text-right hidden-xs"><strong>@Html.DisplayFor(shoe => item.TenNSX)</strong></td>
+
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs">
+                            <a href="@Url.Action("EditNSX", "Admin", new { id = item.MaNSX })" data-toggle="tooltip" title="Chỉnh sữa" class="btn btn-default btn_custom"><i class="fa fa-pencil"></i></a>
+                            <a href="@Url.Action("DeleteNSX", "Admin", new { id = item.MaNSX })" data-toggle="tooltip" title="Xóa" class="btn btn-xs btn-danger btn_custom"><i class="fa fa-times"></i></a>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-sm-5 hidden-xs">
+            <div class="dataTables_info" id="ecom-products_info" role="status" aria-live="polite"><strong>@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</strong>-<strong>@Model.PageCount</strong> of <strong>@Model.PageCount</strong></div>
+        </div>
+        <div class="col-sm-7 col-xs-12 clearfix">
+            <div class="dataTables_paginate paging_bootstrap" id="ecom-products_paginate">
+                <ul class="pagination pagination-sm remove-margin">
+                    <li class="active">@Html.PagedListPager(Model, page => Url.Action("Producter", new { page = page }))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END All Products Content -->
+</div>
+<!-- END All Products Block -->
+

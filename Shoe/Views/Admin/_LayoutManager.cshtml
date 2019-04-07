@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>@ViewBag.Title</title>
+
+    <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+
+    <!-- Stylesheets -->
+    <!-- Bootstrap is included in its original form, unaltered -->
+    <link href="~/Content/Admin/manager/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Related styles of various icon packs and plugins -->
+    <link href="~/Content/Admin/manager/css/plugins.css" rel="stylesheet" />
+
+    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+    <link href="~/Content/Admin/manager/css/main.css" rel="stylesheet" />
+    <link href="~/Content/Admin/manager/css/custom.css" rel="stylesheet" />
+    <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+    <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+    <link href="~/Content/Admin/manager/css/themes.css" rel="stylesheet" />
+    <!-- END Stylesheets -->
+    <!-- Modernizr (browser feature detection library) -->
+    <script src="~/Scripts/manager/js/vendor/modernizr.min.js"></script>
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init(
+            { forced_root_block: "", selector: 'textarea' }
+        );
+    </script>
+
+</head>
+<body>
+
+    <div id="page-wrapper">
+
+        <div id="page-container">
+
+            <!-- Main Container -->
+            <div id="main-container">
+
+                <header class="navbar navbar-default">
+                    <!-- Left Header Navigation -->
+                    <ul class="nav navbar-nav-custom"></ul>
+                    <!-- END Left Header Navigation -->
+                    <!-- Search Form -->
+                    <form action="#" method="post" class="navbar-form-custom">
+                        <div class="form-group">
+                            <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Tìm kiếm..">
+                        </div>
+                    </form>
+                    <!-- END Search Form -->
+                    <!-- Right Header Navigation -->
+                    <ul class="nav navbar-nav-custom pull-right">
+
+                        <!-- END Alternative Sidebar Toggle Button -->
+                        <!-- User Dropdown -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/img/admin.png" alt="avatar"> <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                <li class="dropdown-header text-center">Tài khoản</li>
+
+                                @if (Session["UserAd"] != null)
+                                {
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-user fa-fw pull-right"></i>
+                                        Hi ! @Session["UserAd"].ToString()
+                                    </a>
+                                    <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
+                                    <a href="#modal-user-settings" data-toggle="modal">
+                                        <i class="fa fa-cog fa-fw pull-right"></i>
+                                        Cài đặt
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <!--                                        <a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a>-->
+                                    <a href="@Url.Action("DangXuat", "Admin")"><i class="fa fa-ban fa-fw pull-right"></i> Đăng xuất</a>
+                                </li>
+                                }
+
+                            </ul>
+                        </li>
+                        <!-- END User Dropdown -->
+                    </ul>
+                    <!-- END Right Header Navigation -->
+                 
+                </header>
+                <!-- END Header -->
+                <!-- END Header -->
+                <!-- Page content -->
+                <div id="page-content">
+                    <!-- eCommerce Products Header -->
+                    <div class="content-header">
+                        <ul class="nav-horizontal text-center">
+                            <li>
+                                <a href="@Url.Action("Addnew","Admin")"><i class="fa fa-plus"></i> Thêm sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Producter","Admin")"><i class="gi gi-shop_window"></i> Thông tin nhà sản xuất</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ShoeCatogery","Admin")"><i class="gi gi-shoe_steps"></i> Loại giày</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Products","Admin")"><i class="gi gi-shopping_bag"></i> Danh sách giày</a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("AccountView","Admin")"><i class="gi gi-user"></i> Khách hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END eCommerce Products Header -->
+
+
+                    <!-- ************************************************************************************************************ -->
+                    @RenderBody()
+                    <!-- ************************************************************************************************************ -->
+
+
+
+
+                </div>
+                <!-- END Page Content -->
+                <!-- Footer -->
+                <footer class="clearfix">
+                    <div class="pull-right">
+                        Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" target="_blank">ShoeStore</a>
+                    </div>
+                    <div class="pull-left">
+                        <span>Bài làm</span> &copy; <a href="#" target="_blank">Đồ án ASP.NET Th.Phết</a>
+                    </div>
+                </footer>
+                <!-- END Footer -->
+            </div>
+            <!-- END Main Container -->
+        </div>
+        <!-- END Page Container -->
+    </div>
+    <!-- END Page Wrapper -->
+    <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
+    <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->
+    <div id="modal-user-settings" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title"><i class="fa fa-pencil"></i> Cài đặt</h2>
+                </div>
+                <!-- END Modal Header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="index.html" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+                        <fieldset>
+                            <legend>Thông tin Admin</legend>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Tài khoản</label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static">Admin</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-email">Email</label>
+                                <div class="col-md-8">
+                                    <input type="email" id="user-settings-email" name="user-settings-email" class="form-control" placeholder="admin@example.com">
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <fieldset>
+                            <legend>Cập nhật mật khẩu</legend>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-password">Mật khẩu mới</label>
+                                <div class="col-md-8">
+                                    <input type="password" id="user-settings-password" name="user-settings-password" class="form-control" placeholder="Chọn 1 mật khẩu..">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-repassword">Xác nhận mật khẩu</label>
+                                <div class="col-md-8">
+                                    <input type="password" id="user-settings-repassword" name="user-settings-repassword" class="form-control" placeholder="..xác nhận!">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12 text-right">
+                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Lưu lại</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-user-settings" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-title"><i class="fa fa-pencil"></i> Settings</h2>
+                </div>
+                <!-- END Modal Header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="index.html" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+                        <fieldset>
+                            <legend>Vital Info</legend>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Username</label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static">Admin</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-email">Email</label>
+                                <div class="col-md-8">
+                                    <input type="email" id="user-settings-email" name="user-settings-email" class="form-control" value="admin@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-notifications">Email Notifications</label>
+                                <div class="col-md-8">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" id="user-settings-notifications" name="user-settings-notifications" value="1" checked>
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Password Update</legend>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-password">New Password</label>
+                                <div class="col-md-8">
+                                    <input type="password" id="user-settings-password" name="user-settings-password" class="form-control" placeholder="Please choose a complex one..">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="user-settings-repassword">Confirm New Password</label>
+                                <div class="col-md-8">
+                                    <input type="password" id="user-settings-repassword" name="user-settings-repassword" class="form-control" placeholder="..and confirm it!">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12 text-right">
+                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+    <!-- END User Settings -->
+0
+    <!-- END User Settings -->
+    <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+    <script src="~/Scripts/manager/js/vendor/jquery.min.js"></script>
+    <script src="~/Scripts/manager/js/vendor/bootstrap.min.js"></script>
+    <script src="~/Scripts/manager/js/plugins.js"></script>
+    <script src="~/Scripts/manager/js/app.js"></script>
+
+    <!-- Load and execute javascript code used only in this page -->
+    <script src="~/Scripts/manager/js/vendor/modernizr.min.js"></script>
+    <script src="~/Scripts/manager/js/index.js"></script>
+</body>
+</html>

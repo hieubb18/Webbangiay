@@ -1,0 +1,69 @@
+﻿@using Shoe.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<GIAY>
+<style type="text/css">
+    a.next-arrow {
+        width: 250px;
+    }
+
+    .pagination {
+        border: none;
+    }
+    img.img-fluid {
+        width: 254px;
+        height: 254px;
+    }
+</style>
+
+@{
+    ViewBag.Title = "Sản phẫm theo loại giày";
+    Layout = "~/Views/Product/_LayoutProducts.cshtml";
+}
+<div class="filter-bar d-flex flex-wrap align-items-center">
+    <div class="pagination">
+        <a href="@Url.Action("Products", "Product", null, Request.Url.Scheme)" class="next-arrow">Tất cả sản phẩm</a>
+    </div>
+</div>
+<section class="lattest-product-area pb-40 category-list">
+    <div class="row">
+        @foreach (var giay in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="single-product">
+                    <a href="@Url.Action("Details", "Product", new { id  =  giay.MaGiay})">
+                        <img class="img-fluid" src="~/img/category/@giay.Anhbia" alt="@giay.TenGiay">
+                        <div class="product-details">
+                            <h6>
+                                @giay.TenGiay
+                            </h6>
+                            <div class="price">
+                                <h6><strong>Giá</strong>: @String.Format("{0:0,0}", giay.Giaban) VND</h6>
+                                @*<h6 class="l-through">$210.00</h6>*@
+                            </div>
+                            <div class="prd-bottom">
+                                <a href="@Url.Action("Details", "Product", new { id  =  giay.MaGiay})" class="social-info">
+                                    <span class="ti-bag"></span>
+                                    <p class="hover-text">Thêm vào giỏ hàng</p>
+                                </a>
+                                <a href="@Url.Action("Details", "Product", new { id  =  giay.MaGiay})" class="social-info">
+                                    <span class="lnr lnr-move"></span>
+                                    <p class="hover-text">Xem thêm</p>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<div class="filter-bar d-flex flex-wrap align-items-center">
+
+    @*<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</i></a>*@
+    @Html.PagedListPager(Model, page => Url.Action("Products", new { page = page }))
+    @*<a href="#">3</a>
+        <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+        <a href="#">@Model.PageCount</a>
+        <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>*@
+
+</div>

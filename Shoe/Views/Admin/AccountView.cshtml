@@ -1,0 +1,116 @@
+﻿@using Shoe.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<KHACHHANG>
+@{
+    ViewBag.Title = "AccountView";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+<style type="text/css">
+    .descr {
+        width: 442px;
+    }
+
+    .name_p {
+        width: 278px;
+    }
+
+    .giaban {
+        width: 113px;
+    }
+
+    .image_rz {
+        width: 92px;
+    }
+
+        .image_rz img {
+            width: 75px;
+            height: 75px;
+        }
+
+    .date_rz {
+        width: 221px
+    }
+
+    .btn-group .btn_custom {
+        padding: 10px 10px;
+        margin: 0 3px;
+    }
+
+    .btn-group .btn-info {
+        width: 32.3px;
+    }
+</style>
+<div class="block full">
+    <!-- All Products Title -->
+    <div class="block-title">
+        <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
+        </div>
+        <h2><strong>Danh sách tài khoản khách hàng</strong></h2>
+    </div>
+    <!-- END All Products Title -->
+    <!-- All Products Content -->
+    <table id="ecom-products" class="table table-bordered table-striped table-vcenter">
+
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 70px;">Mã khách hàng <SP></SP></th>
+                <th class="text-center">Tên khách hàng</th>
+                <th class="text-right hidden-xs">Địa chỉ</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Điện thoại</th>
+                <th class="hidden-xs text-center">Ngày sinh</th>
+
+                <th class="text-center">Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><a href="@Url.Action("AccountView","Admin",new { id = item.MaKH})"><strong>@Html.DisplayFor(kh => item.MaKH)</strong></a></td>
+
+                    <td class="name_p"><a href="@Url.Action("AccountView","Admin",new { id = item.MaKH })">@Html.DisplayFor(shoe => item.HoTen)</a></td>
+
+                    <td class="descr">@item.DiachiKH</td>
+
+
+                    <td class="text-right hidden-xs"><strong>@Html.DisplayFor(shoe => item.Email)</strong></td>
+
+
+
+                    <td class="text-center hidden-xs giaban">
+                        <span class="label label-success">@Html.DisplayFor(shoe => item.DienthoaiKH)</span>
+                    </td>
+                    <td class="date_rz hidden-xs text-center">@Html.DisplayFor(shoe => item.Ngaysinh)</td>
+
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs">
+                            <a href="@Url.Action("EditCustomer", "Admin", new { id = item.MaKH })" data-toggle="tooltip" title="Chỉnh sữa" class="btn btn-default btn_custom"><i class="fa fa-pencil"></i></a>
+
+                            @*<a href="#" data-toggle="tooltip" title="Chi tiết" class="btn btn-xs btn-info btn_custom"><i class="fa fa-info"></i></a>*@
+                            <a href="@Url.Action("DeleteCustomer", "Admin", new { id = item.MaKH })" data-toggle="tooltip" title="Xóa" class="btn btn-xs btn-danger btn_custom"><i class="fa fa-times"></i></a>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-sm-5 hidden-xs">
+            <div class="dataTables_info" id="ecom-products_info" role="status" aria-live="polite"><strong>@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</strong>-<strong>@Model.PageCount</strong> of <strong>@Model.PageCount</strong></div>
+        </div>
+        <div class="col-sm-7 col-xs-12 clearfix">
+            <div class="dataTables_paginate paging_bootstrap" id="ecom-products_paginate">
+                <ul class="pagination pagination-sm remove-margin">
+                    <li class="active">@Html.PagedListPager(Model, page => Url.Action("AccountView", new { page = page }))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END All Products Content -->
+</div>
+<!-- END All Products Block -->

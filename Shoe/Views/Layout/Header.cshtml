@@ -1,0 +1,96 @@
+﻿<style type="text/css">
+
+    .disable {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.6;
+    }
+    a.disable {
+        left: -10px;
+        position: relative;
+        bottom: -12px;
+    }
+</style>
+    <!-- Start Header Area -->
+<header class="header_area sticky-header">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light main_box">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="/"><img src="~/img/logo1.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="/">Trang Chủ</a></li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="@Url.Action("Products", "Product", null, Request.Url.Scheme)" class="nav-link" >Cửa Hàng Giày</a>
+                            @*<ul class="dropdown-menu">
+                            </ul>*@
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Product")">Liên hệ</a></li>
+
+                        @*<li class="nav-item submenu dropdown">
+                            <a href="@Url.Action("Products", "Product", null, Request.Url.Scheme)" class="nav-link" data-toggle="dropdown" >Blog</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="#">Cửa Hàng</a></li>
+                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Chi tiết blogger</a></li>
+                            </ul>.
+                        </li>*@
+                        @if (Session["Userkh"] != null)
+                        {
+                            <li class="nav-item submenu dropdown"><a href="#" class="nav-link">Hi ! @Session["Userkh"].ToString()</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="#">Chỉnh sửa thông tin</a></li>
+                                    <li class="nav-item">@Html.ActionLink("ĐĂNG XUẤT", "DangXuat", "Member", null, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class = "nav-item">@Html.ActionLink("ĐĂNG NHẬP", "login", "Member", null, new { @class = "nav-link" })</li>
+                            <li class = "nav-item">@Html.ActionLink("ĐĂNG KÝ", "signup", "Member", null, new { @class = "nav-link" })</li>
+                        }
+                        @*<li class="nav-item submenu dropdown">
+                            <a href="@Url.Action("signup", "Member", null, Request.Url.Scheme)" class="nav-link">Đăng kí</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("login", "Member", null, Request.Url.Scheme)">Đăng nhập</a></li>*@
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("GioHang","Giohang")">Giỏ hàng</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Giohang","GioHang", null, Request.Url.Scheme)">
+                                <span class="ti-bag">
+                                    <a class="disable" href="@Html.Action("GioHangPartical","GioHang")
+                                </a>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="search_input" id="search_input_box">
+        <div class="container">
+            <form class="d-flex justify-content-between">
+                <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                <button type="submit" class="btn"></button>
+                <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+            </form>
+        </div>
+    </div>
+</header>
+<!-- End Header Area -->

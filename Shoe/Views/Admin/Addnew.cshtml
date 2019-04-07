@@ -1,0 +1,109 @@
+﻿@model Shoe.Models.GIAY
+
+@{
+    ViewBag.Title = "Addnew";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+
+<div class="row">
+
+        <div class="col-lg-12">
+            <!-- General Data Block -->
+            <div class="block">
+                <!-- General Data Title -->
+                <div class="block-title">
+                    <h1><i class="fa fa-pencil"></i> <strong>Thêm mới</strong> Sản phẩm</h1>
+                </div>
+                <!-- END General Data Title -->
+                <!-- General Data Content -->
+
+                @using (Html.BeginForm("Addnew", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal form-bordered" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <form class="form-horizontal form-bordered">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-name">Tên giày</label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.TenGiay, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenGiay, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-description">Mô tả</label>
+                            <div class="col-md-9">
+                                <textarea name="Mota" class="ckeditor" placeholder="Mô tả thông tin giày"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-description">Ảnh</label>
+                            <div class="col-md-3">
+                                <div class="file-upload">
+                                    <div class="file-select">
+                                        <div class="file-select-button" id="fileName">Chọn file</div>
+                                        <div class="file-select-name" id="noFile">Chưa chọn file...</div>
+                                        <input type="file" name="fileUpload" id="chooseFile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-name">Ngày thêm</label>
+                            <div class="col-md-9">
+                                <input type="date" id="date" name="Ngaycapnhat" />
+                                @Html.ValidationMessageFor(model => model.Ngaycapnhat, "", new { @class = "text-danger" })
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-name">Số lượng</label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Soluongton, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Soluongton, "", new { @class = "text-danger" })
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-category">Chọn loại giày</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("MaLoaiGiay", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @id = "product-category", @class = "select-chosen", style = "width: 150px;", placeholder = "Chọn loại giày.." })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-category">Chọn nhà sản xuẩt</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("MaNSX", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @id = "product-category", @class = "select-chosen", style = "width: 150px;", placeholder = "Chọn nhà sản xuất.." })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="product-price">Đơn giá</label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.Giaban, new { htmlAttributes = new { @class = "form-control", @id = "product-price" } })
+                                    @Html.ValidationMessageFor(model => model.Giaban, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-actions">
+                            <div class="col-md-9 col-md-offset-3">
+                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+                                <button type="reset" class="btn btn-sm btn-primary"><i class="fa fa-refresh"></i> Reset</button>
+                                <button type="reset" class="btn btn-sm btn-primary"><a style="color:white; text-decoration:none;" href="@Url.Action("Products", "Admin")"><i class="fa fa-repeat"></i> Return</a></button>
+
+                            </div>
+                        </div>
+                    </form>
+                }
+
+                <!-- END General Data Content -->
+            </div>
+            <!-- END General Data Block -->
+        </div>
+    </div>

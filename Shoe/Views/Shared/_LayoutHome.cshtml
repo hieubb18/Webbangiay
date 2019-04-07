@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile Specific Meta -->
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Karma Shop</title>
+    <!--
+        CSS
+        ============================================= -->
+    <link href="~/Content/linearicons.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/themify-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+
+    <link href="~/Content/nice-select.css" rel="stylesheet" />
+
+    <link href="~/Content/nouislider.min.css" rel="stylesheet" />
+
+    <link href="~/Content/ion.rangeSlider.css" rel="stylesheet" />
+
+    <link href="~/Content/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
+
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <!-- Start Header Area -->
+    @Html.Partial("~/Views/Layout/Header.cshtml")
+    <!-- End Header Area -->
+    <!-- start banner Area -->
+    <section class="banner-area">
+        <div class="container">
+            <div class="row fullscreen align-items-center justify-content-start">
+                <div class="col-lg-12">
+                    <div class="active-banner-slider owl-carousel">
+                        <!-- single-slide -->
+                        <div class="row single-slide align-items-center d-flex">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="banner-content">
+                                    <a href="@Url.Action("Products", "Product", null, Request.Url.Scheme)">
+                                        <h1>MUA SẮM NGAY</h1>
+                                    </a>
+                                        <p>
+                                            Giày Nike Air Zoom Pegasus 35 siêu phẩm giày thể thao được chờ đợi nhất năm 2018 đã chính thức ra mắt.
+                                            Nike Air Zoom Pegasus 35 với thiết kế cực kỳ độc đáo và áp dụng những công nghệ tiến bộ nhất thế giới,
+                                            chắc chắn đây sẽ là mẫu giày không thể bỏ qua của bất cứ ai.
+                                        </p>
+                                    
+                               </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="banner-img">
+                                    <img class="img-fluid" src="~/img/banner/banner-img.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single-slide -->
+                        <div class="row single-slide">
+                            <div class="col-lg-5">
+                                <div class="banner-content">
+                                    <a href="@Url.Action("Products", "Product", null, Request.Url.Scheme)">
+                                        <h1>MUA SẮM NGAY</h1>
+                                    </a>
+                                    <p>
+                                        Giày Nike Air Zoom Pegasus 35 siêu phẩm giày thể thao được chờ đợi nhất năm 2018 đã chính thức ra mắt.
+                                        Nike Air Zoom Pegasus 35 với thiết kế cực kỳ độc đáo và áp dụng những công nghệ tiến bộ nhất thế giới,
+                                        chắc chắn đây sẽ là mẫu giày không thể bỏ qua của bất cứ ai.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="banner-img">
+                                    <img class="img-fluid" src="~/img/banner/banner-img.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+    <!-- start features Area -->
+    <section class="features-area section_gap">
+        <div class="container">
+            <div class="row features-inner">
+                <!-- single features -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-features">
+                        <div class="f-icon">
+                            <img src="~/img/features/f-icon1.png" alt="">
+                        </div>
+                        <h6>Miễn phí vận chuyễn</h6>
+                        <p>Giao hàng tận nơi trong ngày</p>
+                    </div>
+                </div>
+                <!-- single features -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-features">
+                        <div class="f-icon">
+                            <img src="~/img/features/f-icon2.png" alt="">
+                        </div>
+                        <h6>Hoàn trả miễn phí trong 7 ngày</h6>
+                        <p>Chất lượng tuyệt đối</p>
+                    </div>
+                </div>
+                <!-- single features -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-features">
+                        <div class="f-icon">
+                            <img src="~/img/features/f-icon3.png" alt="">
+                        </div>
+                        <h6>Hổ trợ 24/7</h6>
+                        <p>Áp dụng cho tất cẩ khách hàng</p>
+                    </div>
+                </div>
+                <!-- single features -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-features">
+                        <div class="f-icon">
+                            <img src="~/img/features/f-icon4.png" alt="">
+                        </div>
+                        <h6>Thanh toán an toàn</h6>
+                        <p>VISA/MASTERCARD/CASH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  @Html.Partial("~/Views/Layout/Footer.cshtml")
+</body>
+</html>

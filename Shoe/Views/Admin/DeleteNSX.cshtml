@@ -1,0 +1,47 @@
+﻿@model Shoe.Models.NHASANXUAT
+
+@{
+    ViewBag.Title = "DeleteNSX";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+
+
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <!-- General Data Block -->
+        <div class="block">
+            <!-- General Data Title -->
+            <div class="block-title">
+                <h2><i class="fa fa-pencil"></i> <strong>Xóa thông tin</strong> NHÀ SẢN XUẤT</h2>
+                <h3>Bạn có chắc là xóa không?</h3>
+            </div>
+            <div class="form-horizontal form-bordered">
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Mã nhà sản xuất </label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.MaNSX)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Tên nhà sản xuất</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.TenNSX)
+                    </div>
+                </div>
+                <div class="form-group form-actions">
+                    <div class="col-md-9 col-md-offset-3">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-deaf"></i> Delete</button>
+                            <button type="reset" class="btn btn-sm btn-primary"><a style="color:white; text-decoration:none;" href="@Url.Action("Producter", "Admin")"><i class="fa fa-repeat"></i> Return</a></button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿@using Shoe.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<GIAY>
+
+@helper Truncate(string input, int length)
+    {
+    if (input.Length < length)
+    {
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+<style type="text/css">
+    .descr{
+        width: 442px;
+    }
+    .name_p {
+        width: 278px;
+    }
+    .giaban{
+        width: 113px;
+    }
+    .image_rz {
+        width: 92px;
+    }
+    .image_rz img{
+        width: 75px;
+        height: 75px;
+    }
+    .date_rz{
+        width:221px
+    }
+    .btn-group .btn_custom{
+        padding: 10px 10px;
+        margin: 0 3px;
+    }
+    .btn-group .btn-info {
+        width: 32.3px;
+    }
+
+</style>
+<div class="block full">
+    <!-- All Products Title -->
+    <div class="block-title">
+        <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
+        </div>
+        <h2><strong>Danh sách sản phẩm</strong></h2>
+    </div>
+    <!-- END All Products Title -->
+    <!-- All Products Content -->
+    <table id="ecom-products" class="table table-bordered table-striped table-vcenter">
+
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 70px;">Mã <SP></SP></th>
+                <th class="text-center">Tên sản phẩm</th>
+                <th class="text-center">Mô tả</th>
+                <th class="text-center">Ảnh</th>
+                <th class="text-right hidden-xs">Đơn giá</th>
+                <th class="text-center">Số lượng</th>
+                <th class="hidden-xs text-center">Ngày thêm</th>
+                <th class="text-center">Loại giày </th>
+                <th class="text-center">Nhà sản xuất </th>
+                <th class="text-center">Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach( var item in Model) { 
+            <tr>
+                <td class="text-center"><a href="@Url.Action("Products","Admin",new { id = item.MaGiay})"><strong>@Html.DisplayFor(shoe => item.MaGiay)</strong></a></td>
+
+                <td class="name_p"><a href="@Url.Action("Products","Admin",new { id = item.MaGiay})">@Html.DisplayFor(shoe => item.TenGiay)</a></td>
+
+                <td class="descr">@Truncate(item.Mota, 100)</td>
+
+                <td class="text-right image_rz"><img src="@Url.Content("~/img/category/" + item.Anhbia)" /></td>
+
+                <td class="text-right hidden-xs giaban"><strong>@Html.DisplayFor(shoe => item.Giaban) VND</strong></td>
+
+                
+
+                <td class="text-center hidden-xs giaban">
+                    <span class="label label-success">@Html.DisplayFor(shoe => item.Soluongton)</span>
+                </td>
+                <td class="date_rz hidden-xs text-center">@Html.DisplayFor(shoe => item.Ngaycapnhat)</td>
+                <td class="text-center hidden-xs">
+                   @Html.DisplayFor(shoe => item.LOAIGIAY.TenLoaiGiay)
+                </td>
+                <td class="text-center hidden-xs">
+                    @Html.DisplayFor(shoe => item.NHASANXUAT.TenNSX)
+                </td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-xs">
+                        <a href="@Url.Action("Edit", "Admin", new { id = item.MaGiay })" data-toggle="tooltip" title="Chỉnh sữa" class="btn btn-default btn_custom"><i class="fa fa-pencil"></i></a>
+
+                        @*<a href="#" data-toggle="tooltip" title="Chi tiết" class="btn btn-xs btn-info btn_custom"><i class="fa fa-info"></i></a>*@
+                        <a href="@Url.Action("Delete", "Admin", new { id = item.MaGiay })" data-toggle="tooltip" title="Xóa" class="btn btn-xs btn-danger btn_custom"><i class="fa fa-times"></i></a>
+                        
+                    </div>
+                </td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-sm-5 hidden-xs">
+            <div class="dataTables_info" id="ecom-products_info" role="status" aria-live="polite"><strong>@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</strong>-<strong>@Model.PageCount</strong> of <strong>@Model.PageCount</strong></div>
+        </div>
+        <div class="col-sm-7 col-xs-12 clearfix">
+            <div class="dataTables_paginate paging_bootstrap" id="ecom-products_paginate">
+                <ul class="pagination pagination-sm remove-margin">
+                    <li class="active">@Html.PagedListPager(Model, page => Url.Action("Products", new { page = page }))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END All Products Content -->
+</div>
+<!-- END All Products Block -->

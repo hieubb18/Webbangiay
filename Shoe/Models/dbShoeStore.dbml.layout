@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.75" name="dbShoeStore">
+  <DataContextMoniker Name="/dbShoeStoreDataContext" />
+  <nestedChildShapes>
+    <classShape Id="65fc005e-5325-4e55-a2b6-04354945882c" absoluteBounds="6.75, 1.875, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/ADMIN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36c3059f-2739-410f-9ccd-949f7544d640" absoluteBounds="6.765, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76e28be3-01cc-453a-a8ac-87d98671d466" absoluteBounds="6.75, 4.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/CHITIETDONTHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d019632b-bcef-49b7-adaa-e59be0ab9b00" absoluteBounds="6.765, 5.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9edcec7-f0cf-4be2-8776-c94093a51750" absoluteBounds="3.5, 6.25, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/DONDATHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16a2f7a7-ec6e-4fce-ba0e-4fcb5f8a0467" absoluteBounds="3.515, 6.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1709b09-5184-4c16-b1f9-d20ad7fc4c4b" absoluteBounds="3.5, 2.125, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/GIAY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a76569c5-9d16-417f-8f0e-cc98166decaa" absoluteBounds="3.515, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ad89f48d-0cca-4ede-b07a-8a98fddec160" absoluteBounds="0.75, 6.125, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/KHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ab662f14-8847-441a-b600-5be515f022f0" absoluteBounds="0.765, 6.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8e7fc036-f871-4336-9050-36207dc22ba7" absoluteBounds="0.75, 2.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/LOAIGIAY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee2ca1a2-d82f-4cff-bb44-fe79f1c9dc86" absoluteBounds="0.765, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="62865e60-99c2-4a53-b008-31188f973072" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/dbShoeStoreDataContext/NHASANXUAT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="946fa4f5-fe31-403e-92c2-896e6b3abe20" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 7.23159912109375); (3.5 : 7.23159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbShoeStoreDataContext/KHACHHANG/KHACHHANG_DONDATHANG" />
+      <nodes>
+        <classShapeMoniker Id="ad89f48d-0cca-4ede-b07a-8a98fddec160" />
+        <classShapeMoniker Id="b9edcec7-f0cf-4be2-8776-c94093a51750" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.34699625651042); (3.5 : 3.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbShoeStoreDataContext/LOAIGIAY/LOAIGIAY_GIAY" />
+      <nodes>
+        <classShapeMoniker Id="8e7fc036-f871-4336-9050-36207dc22ba7" />
+        <classShapeMoniker Id="f1709b09-5184-4c16-b1f9-d20ad7fc4c4b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.34699625651042); (4.5 : 1.34699625651042); (4.5 : 2.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbShoeStoreDataContext/NHASANXUAT/NHASANXUAT_GIAY" />
+      <nodes>
+        <classShapeMoniker Id="62865e60-99c2-4a53-b008-31188f973072" />
+        <classShapeMoniker Id="f1709b09-5184-4c16-b1f9-d20ad7fc4c4b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

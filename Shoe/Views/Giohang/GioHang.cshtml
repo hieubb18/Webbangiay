@@ -1,0 +1,160 @@
+﻿@using Shoe.Models
+<style type="text/css">
+    .col_item {
+        width: 200px;
+    }
+
+    .col_item_tool {
+        width: 100px;
+    }
+
+    .style_td > a, b, input {
+        width: 150px;
+        color: #222222;
+    }
+
+    .style_td a, .style_td input {
+        color: #007bff;
+    }
+
+    .style_td > input:hover {
+        cursor: pointer;
+    }
+
+    .style_td > b {
+        margin: 15px 0;
+    }
+</style>
+
+
+@model List<Giohang>
+@{
+    ViewBag.Title = "Giỏ hàng ";
+    Layout = "~/Views/Shared/_LayoutHF.cshtml";
+}
+
+
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Giỏ hàng</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="#">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Giỏ hàng</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================Cart Area =================-->
+
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hình sản phẩm</th>
+                            <th scope="col" class="col_item">Tên giày</th>
+                            <th scope="col" class="col_item">Giá</th>
+                            <th scope="col" class="col_item">Số lượng</th>
+                            <th scope="col" class="col_item">Tổng cộng</th>
+
+                            <th scope="col" col_item_tool>Công cụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img style="width:264px; height:282px" src="~/img/category/@item.sAnhbia" alt="">
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <p>@item.sTengiay</p>
+                                </td>
+
+                                @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMasp = item.iMagiay }))
+                                {
+                                    <td>
+                                        <h5>@String.Format("{0:0,0}", item.dDongia) VND</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="number" name="txtSoluong" id="sst" value="@item.iSoluong" title="Sô lượng:"
+                                                   class="input-text qty" style="height: 42px;
+                                                                            width: 72px;">
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@String.Format("{0:0,0}", item.dThanhtien) VND</h5>
+                                    </td>
+
+                                    <td class="style_td">
+                                        <a href="@Url.Action("Details", "Product", new { id = item.iMagiay }) " class="gray_btn">Chi tiết</a> <br />
+                                        <b class="gray_btn">@Html.ActionLink("Xóa", "XoaGiohang", new { @iMasp = item.iMagiay })</b><br />
+                                        <input type="submit" value="Cập nhật" class="gray_btn" />
+                                    </td>
+
+                                }
+
+                            </tr>
+                        }
+                            <tr class="bottom_button">
+
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                <td class="style_td">
+
+                                    <b class="gray_btn"> @Html.ActionLink("Xóa All", "XoatTatcaGiohang") </b>
+</td>
+                                </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5>Tổng SL: @ViewBag.Tongsoluong</h5>
+                            </td>
+                            <td colspan="1">
+                                <h5>Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VND</h5>
+                            </td>
+
+                        </tr>
+
+                        <tr class="out_button_area">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2">
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="@Url.Action("Products","Product", null, Request.Url.Scheme)">Tiếp tục mua hàng</a>
+                                   @Html.ActionLink("Đặt hàng", "Dathang", "Giohang", null, new {@id= "submitButton", @class = "primary-btn" })
+                                </div>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

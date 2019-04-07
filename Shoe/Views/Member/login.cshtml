@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Layout/_LayoutUser.cshtml";
+}
+<style>
+    .h3_login{
+        color: lawngreen;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<div class="col-lg-6">
+    <div class="login_box_img">
+        <img class="img-fluid" src="~/img/login.jpg" alt="">
+        <div class="hover">
+            <h4>Hãy là thành viên với chúng tôi?</h4>
+            <p>Để đặt đơn hàng dễ dàng, Luôn luôn có ưu đãi dành cho bạn</p>
+            <a class="primary-btn" href="@Url.Action("signup", "Member", null, Request.Url.Scheme)">Tạo tài khoản</a>-->
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="login_form_inner">
+
+        <h3 style="margin-top:100px">Đăng nhập</h3>
+
+        <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
+            @using (Html.BeginForm())
+            {
+                
+                @Html.ValidationSummary(true)
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("Taikhoan", "", new { @class = "form-control", placeholder = "Tài khoản " })
+                    @ViewData["ErrorUsername"]
+                </div>
+                
+                <div class="col-md-12 form-group">
+                    @Html.Password("Matkhau", "", new { @class = "form-control", placeholder = "Mật khẩu" })
+                    @ViewData["ErrorPassword"]
+                </div>
+                
+                <div class="col-md-12 form-group">
+                    <input type="submit" value="Đăng nhập" class="primary-btn"  />
+                </div>
+
+            }
+                <h3 style="color: lawngreen;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">@ViewBag.Thongbao</h3>
+        </form> 
+    </div>
+</div>

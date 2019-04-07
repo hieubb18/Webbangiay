@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Partial("~/Views/Layout/Head.cshtml")
+</head>
+<body>
+    @Html.Partial("~/Views/Layout/Header.cshtml")
+    @RenderBody()
+    @Html.Partial("~/Views/Layout/Footer.cshtml")
+</body>
+</html>

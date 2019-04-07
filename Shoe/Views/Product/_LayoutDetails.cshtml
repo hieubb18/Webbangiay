@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Partial("~/Views/Layout/Head.cshtml")
+
+
+</head>
+<body>
+
+
+    @Html.Partial("~/Views/Layout/Header.cshtml")
+    <div>
+        @RenderBody()
+    </div>
+    <section class="related-product-area section_gap_bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        
+                        <p>
+                            ---------------------------------------------------------------------------------------------------
+                        </p>
+
+                        <h1></h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    @Html.Partial("~/Views/Layout/Footer.cshtml")
+</body>
+</html>

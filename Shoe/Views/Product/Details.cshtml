@@ -1,0 +1,86 @@
+﻿@using Shoe.Models
+
+
+@{
+    ViewBag.Title = "Thông tin sản phẩm";
+    Layout = "~/Views/Product/_LayoutDetails.cshtml";
+}
+
+
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang chi tiết sản phẩm</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="#">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Cửa hàng<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Chi tiết sản phẩm</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- End Banner Area -->
+    <!--================Single Product Area =================-->
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <img width="600px" height="500px" src="~/img/category/@Model.Anhbia" alt="">
+
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h3>@Model.TenGiay</h3>
+                        <h2>Giá: @String.Format("{0:0,0}", Model.Giaban) VND</h2>
+                        <ul class="list">
+                            @*<li><a class="active" href="#"><span>Loại giày</span> : Household</a></li>*@
+                            <li><a href="#"><span>Có sẵn: </span>@Model.Soluongton</a></li>
+                        </ul>
+                        <p>
+                            @Model.Mota
+                        </p>
+                        <div class="card_area d-flex align-items-center">
+                            <a class="primary-btn" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaGiay = @Model.MaGiay, @strURL = Request.Url.ToString() })">Thêm vào giỏ hàng</a>
+                            <a href="https://www.baokim.vn/payment/product/version11?business=luonghieu184%40gmail.com&id=&order_description=Gi%C3%A0y+Vans+old+Skool+l%C3%A0+%C4%91%C3%B4i+gi%C3%A0y+%C4%91%C3%A3+%C4%91%C6%B0%E1%BB%A3c+thi%E1%BA%BFt+k%E1%BA%BF+t%E1%BB%AB+l%C3%A2u+nh%C6%B0ng+th%E1%BB%9Di+gian+g%E1%BA%A7n+%C4%91%C3%A2y+tr%C3%A0o+l%C6%B0u+gi%C3%A0y+vans+old+skool+l%E1%BA%A1i+quay+tr%E1%BB%9F+l%E1%BA%A1i.+%C4%90%C6%B0%E1%BB%A3c+ph%C3%A2n+bi%E1%BA%BFt+v%E1%BB%9Bi+h%C3%A0ng+F1%2C+%C4%91%C3%B4i+gi%C3%A0y+SF+n%C3%A0y+%C4%91%C6%B0%E1%BB%A3c+c%E1%BA%A5u+t%E1%BA%A1o+ph%E1%BA%A7n+%C4%91u%C3%B4i+v%C3%A0&product_name=Gi%C3%A0y+Vans+Old+School+%C4%91en+tr%E1%BA%AFng+da+l%E1%BB%99n+F1&product_price=280000&product_quantity=1&total_amount=280000&url_cancel=http%3A%2F%2Fshoestore.somee.com%2FGiohang%2FXacnhanhuythanhtoan&url_detail=http%3A%2F%2Fshoestore.somee.com%2FProduct%2FDetails%2F9&url_success=http%3A%2F%2Fshoestore.somee.com%2FGiohang%2FXacnhanthanhtoan"><img src="~/img/thanhtoan.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+                        
+                        </div>
+                        <br />
+
+                        <div id="fb-root"></div>
+                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=395568061238475&autoLogAppEvents=1"></script>
+                        <div class="fb-like" data-href="@Url.Action("Details", "Product", new { id  =  Model.MaGiay})" data-width="200" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================End Single Product Area =================-->
+    <section class="product_description_area">
+        <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+                       aria-selected="false">Đánh giá</a>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="fb-root"></div>
+                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=395568061238475&autoLogAppEvents=1"></script>
+                            <div class="fb-comments" data-href="http://shoestore.somee.com/Product/Details/" data-width="100%" data-numposts="10"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Product Description Area =================
+

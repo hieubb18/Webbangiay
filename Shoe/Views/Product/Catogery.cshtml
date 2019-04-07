@@ -1,0 +1,7 @@
+﻿    <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+    @foreach (var item in Model)
+    {
+        
+        <li class="main-nav-list child"><a href="@Url.Action("SPCatogery", "Product", new { id = item.MaLoaiGiay })">@item.TenLoaiGiay<span class="number"></span></a></li>
+    }
+    </ul>

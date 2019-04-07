@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Layout/_LayoutUser.cshtml";
+}
+
+<div class="col-lg-6">
+    <div class="login_box_img">
+        <img class="img-fluid" src="~/img/dangki.jpg" alt="">
+        <div class="hover">
+            <h4>Hãy là thành viên với chúng tôi?</h4>
+            <p>Rất nhiều sản phẩm ưu đãi dành cho bạn, tham gia ngay hôm nay</p>
+        <!--  <a class="primary-btn" href="signup">Tạo tài khoản</a>-->  
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="login_form_inner">
+        <h3>Thông tin đăng kí </h3>
+        
+        <form class="row login_form" method="post" id="contactForm" novalidate="novalidate" >
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("HoTenKH","", new {@id = "formName", @class = "form-control", placeholder = "Nhập họ tên " })
+                    @ViewData["ErrorName"]
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("Taikhoan", "", new { @id = "formUser", @class = "form-control", placeholder = "Tài khoản " })
+                    @ViewData["ErrorUsername"]
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.Password("Matkhau", "", new { @class = "form-control", placeholder = "Mật khẩu" })
+                    @ViewData["ErrorPassword"]
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.Password("MatkhauRepeat", "", new { @class = "form-control", placeholder = "Nhập lại mật khẩu" })
+                    @ViewData["ErrorPasswordRP"]
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("Email", "", new {@id = "formEmail", @class = "form-control", placeholder = "Example@email.com " })
+                    @ViewData["ErrorEmail"]
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("DiachiKH", "", new { @class = "form-control", placeholder = "Địa chỉ (Optional)" })
+                </div>
+                <div class="col-md-12 form-group">
+                    @Html.TextBox("DienthoaiKH", "", new { @class = "form-control", placeholder = "Điện thoại " })
+                    @ViewData["ErrorPhone"]
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="date" name="Ngaysinh" value="" class = "form-control" placeholder=" Ngày sinh" />
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="submit" value="Đăng kí" class="primary-btn" onclick="validateForm()"/>
+                </div>
+            }
+         </form>
+
+    </div>
+</div>

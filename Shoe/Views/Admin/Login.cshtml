@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TRANG QUẢN TRỊ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet" />
+    <style type="text/css">
+        .input_ {
+            font-family: "Asap", sans-serif;
+            display: block;
+            border-radius: 5px;
+            font-size: 16px;
+            background: white;
+            width: 100%;
+            border: 0;
+            padding: 10px 10px;
+            margin: 15px -10px;
+        }
+
+        .button_ {
+            font-family: "Asap", sans-serif;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            width: 150px;
+            border: 0;
+            padding: 10px 0;
+            margin-top: 10px;
+            margin-left: -5px;
+            border-radius: 5px;
+            background-color: #f45b69;
+        }
+
+            .button_:hover {
+                background-color: #f24353;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="login">
+        @using (Html.BeginForm())
+        {
+            <form>
+            <h3>QUẢN LÍ SẢN PHẨM</h3>
+            @Html.ValidationSummary(true)
+            <input id="input1" type="text" name="txtUsername" class="input_" placeholder="Tài khoản" required/>
+            <input type="password" name="txtPassword" class="input_" placeholder="Mật khẩu" required/>
+     
+            <button type="submit" class="button_">ĐĂNG NHẬP</button>
+            </form>
+            <script>
+                    var intputElements = document.getElementsByTagName("input");
+                    for (var i = 0; i < intputElements.length; i++) {
+                        intputElements[i].oninvalid = function (e) {
+                            e.target.setCustomValidity("");
+                            if (!e.target.validity.valid) {
+                                if (e.target.name == "txtUsername") {
+                                    e.target.setCustomValidity("Bạn chưa nhập tài khoản");
+                                } else {
+                                    e.target.setCustomValidity("Bạn chưa nhập mật khẩu ");
+                                }
+                            }
+                        }
+                    }
+            </script>
+        }
+    </div>
+</body>
+</html>

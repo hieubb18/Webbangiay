@@ -1,0 +1,83 @@
+﻿@model Shoe.Models.GIAY
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Admin/_LayoutManager.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <!-- General Data Block -->
+        <div class="block">
+            <!-- General Data Title -->
+            <div class="block-title">
+                <h2><i class="fa fa-pencil"></i> <strong>Chỉnh sửa</strong> Sản phẩm</h2>
+            </div>
+            <div class="form-horizontal form-bordered">
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Tên giày</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.TenGiay)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Mô tả</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Mota)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Hình</label>
+                    <div class="col-md-9">
+                        <img src="@Url.Content("~/img/category/" + Model.Anhbia)" width="50px" height="50px" style="margin: -10px 0 0 20px" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Ngày cập nhật</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Ngaycapnhat)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Số lượng</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.Soluongton)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Giá bán</label>
+                    <div class="col-md-9">
+                        @Html.DisplayNameFor(model => model.Giaban)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Loại giày</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.MaLoaiGiay)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">Nhà sản xuất</label>
+                    <div class="col-md-9">
+                        @Html.DisplayFor(model => model.MaNSX)
+                    </div>
+                </div>
+
+                <div class="form-group form-actions">
+                    <div class="col-md-9 col-md-offset-3">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-deaf"></i> Delete</button>
+                        <button type="reset" class="btn btn-sm btn-primary"><a style="color:white; text-decoration:none;" href="@Url.Action("Products", "Admin")"><i class="fa fa-repeat"></i> Return</a></button>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
